@@ -30,8 +30,10 @@ public class Sort {
         if (products != null) {
             for (int current = 1; current < elementsQuantity; current++) {
                 int target = current;
-                log.info("Position {}", target);
+                log.info("Position {}", current);
                 while (target > 0 && products[target].getPrice() < products[target - 1].getPrice()) {
+                    log.info("Checking left element.");
+                    log.info("Left element cheaper -> {}.", products[target]);
                     switchElements(products, target, target - 1);
                     target--;
                 }
@@ -41,12 +43,10 @@ public class Sort {
     }
 
     private static void switchElements(Product[] products, int target, int i) {
-        log.info("Switch {} for {}", target, i);
         Product targetProduct = products[target];
         Product beforeTarget = products[i];
 
-        log.info("Switch {} {}", targetProduct.getName(), beforeTarget.getName());
-
+        log.info("Switch {} for {}", targetProduct, beforeTarget);
         products[target] = beforeTarget;
         products[i] = targetProduct;
     }
