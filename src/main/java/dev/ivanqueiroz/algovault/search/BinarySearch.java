@@ -10,7 +10,7 @@ public class BinarySearch {
     private BinarySearch() {
     }
 
-    public static int search(int vector[], int key, int size) {
+    public static int search(int[] vector, int key, int size) {
 
         var lowLimit = 0;
         var highLimit = size - 1;
@@ -42,7 +42,7 @@ public class BinarySearch {
         return (lowLimit + highLimit) / 2;
     }
 
-    public static int searchRecursive(int key, int vector[], int left, int right) {
+    public static int searchRecursive(int key, int[] vector, int left, int right) {
         log.info("Calculating middle.");
         var middle = middleCalc(left, right);
         log.info("Middle index {}, value {}", middle, vector[middle]);

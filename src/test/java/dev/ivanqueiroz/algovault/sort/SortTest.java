@@ -1,14 +1,12 @@
-package dev.ivanqueiroz.algovault.search;
+package dev.ivanqueiroz.algovault.sort;
 
 import dev.ivanqueiroz.algovault.model.Product;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Slf4j
-class SequencialSearchTest {
+class SortTest {
 
     private Product[] products;
 
@@ -17,9 +15,18 @@ class SequencialSearchTest {
             new Product("Fusca", 17000)};
     }
 
-    @Test void searchCheaper() {
-        final int cheaper = SequencialSearch.searchCheaper(products, 0, products.length - 1);
-        log.info("Cheaper: {}", products[cheaper].getName());
-        assertEquals("Brasília", products[cheaper].getName());
+    @Test void selectionSortTest() {
+        Sort.selectionSort(products, products.length);
+        sortAssert();
+    }
+
+    @Test void insertionSortTest() {
+        Sort.insertionSort(products, products.length);
+        sortAssert();
+    }
+
+    private void sortAssert() {
+        assertEquals("Brasília", products[0].getName());
+        assertEquals("Lamborghini", products[products.length - 1].getName());
     }
 }
